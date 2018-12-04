@@ -1,0 +1,40 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+body{
+    background-color: whitesmoke !important;
+    color:black !important;
+}
+
+#mainNav {
+    background-color: #3fa46a !important;
+    border: 2px black solid;
+    font-family: Raleway !important;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.nav-link {
+    transition: 0.3s ease !important;
+    background: #3fa46a !important;
+    color: #ffffff !important;
+    font-size: 20px !important;
+    text-decoration: none !important;
+    border-top: 4px solid #3fa46a !important;
+    border-bottom: 4px solid #3fa46a !important;
+    padding: 20px 0 !important;
+    margin: 0 20px !important;
+}
+
+.nav-link:hover {
+    border-top: 4px solid #ffffff !important;
+    border-bottom: 4px solid #ffffff !important;
+    padding: 6px 0 !important;
+}
+
+.jumbotron {
+    color: black;
+    background-color: #3fa46a !important;
+    border-radius: 0 !important;
+    border-bottom: 2px black solid;
+    border-left: 2px black solid;
+    border-right: 2px black solid;
+}
