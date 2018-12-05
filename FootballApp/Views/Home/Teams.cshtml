@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Teams";
+}
+
+<div class="jumbotron">
+    <h1>Teams</h1>
+    <p class="lead">Here is all the teams in the Premier League.</p>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Logo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Arena</th>
+                <th scope="col">Founded</th>
+                <th scope="col">Website</th>
+            </tr>
+        </thead>
+        <tbody id="teamBody"></tbody>
+    </table>
+
+    <script>
+        $.ajax({
+            headers: { 'X-Auth-Token': '89b1396c62ff41119cabd0a504ec09bf' },
+            url: "https://api.football-data.org/v2/competitions/PL/teams",
+            dataType: 'json',
+            type: 'GET',
+
+        }).done(function (response) {
+            // do something with the response, e.g. isolate the id of a linked resource
+            console.log(response.teams);
+            var teamArray = jQuery.makeArray(response.teams);
+
+            var tBody = document.querySelector("#teamBody");
+
+            teamArray.forEach(function (team) {
+                var tr = document.createElement("tr");
+                var thName = document.createElement("th");
+                var thArena = document.createElement("th");
+                var thFounded = document.createElement("th");
+                var thWebsite = document.createElement("th");
+                var image = document.createElement("img");
+                image.src = team.crestUrl;
+                image.style.width = "40px";
+                image.style.height = "40px";
+                thName.textContent = team.name;
+                thArena.textContent = team.venue;
+                thFounded.textContent = team.founded;
+                thWebsite.textContent = team.website;
+
+                tr.appendChild(image);
+                tr.appendChild(thName);
+                tr.appendChild(thArena);
+                tr.appendChild(thFounded);
+                tr.appendChild(thWebsite);
+                tBody.appendChild(tr);
+            });
+
+        });
+    </script>
+</div>
+

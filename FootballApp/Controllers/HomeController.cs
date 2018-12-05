@@ -11,6 +11,11 @@ namespace FootballApp.Controllers
         public ActionResult Index()
         {
             return View();
-        }       
+        }
+
+        public ActionResult Teams()
+        {
+            return View();
+        }
     }
 }

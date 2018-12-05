@@ -3,17 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link rel="stylesheet" href="~/Content/Site.css"/>
+    <title>FootballApp - Jacob Andersson</title>
+    <link rel="stylesheet" href="~/Content/Site.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     @Scripts.Render("~/bundles/modernizr")
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <img src="~/Content/img/icons8-soccer-ball-48.png" />
         <a class="navbar-brand" href="#">@Html.ActionLink("Football App", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+        <img src="~/Content/img/icons8-the-premier-league-48.png"/>
         <div>
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Teams", "Teams", "Home", new { @class = "nav-link" })</li>
             </ul>
         </div>
     </nav>
