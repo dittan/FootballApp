@@ -3,8 +3,77 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Standings</h1>
+    <h2 id="PL"></h2>
+    <p id="lastUpdated"></p>
+
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col">Club</th>
+                <th scope="col">MP</th>
+                <th scope="col">W</th>
+                <th scope="col">D</th>
+                <th scope="col">L</th>
+                <th scope="col">Pts</th>
+            </tr>
+        </thead>
+        <tbody id="standingsBody"></tbody>
+    </table>
 </div>
+
+<script>
+    $.ajax({
+        headers: { 'X-Auth-Token': '89b1396c62ff41119cabd0a504ec09bf' },
+        url: "http://api.football-data.org/v2/competitions/PL/standings?standingType=TOTAL",
+        dataType: 'json',
+        type: 'GET',
+    }).done(function (response) {
+        // do something with the response, e.g. isolate the id of a linked resource
+        console.log(response);
+        var plName = document.querySelector("#PL");
+        plName.textContent = response.competition.name;
+        var lastUpdate = document.querySelector("#lastUpdated");
+        lastUpdate.textContent = "Last Updated : " + response.competition.lastUpdated;
+
+        var standingsArray = jQuery.makeArray(response.standings[0].table);
+        var tBody = document.querySelector("#standingsBody");
+
+        standingsArray.forEach(function (table) {
+            var tr = document.createElement("tr");
+            var thClub = document.createElement("th");
+            var thPoints = document.createElement("th");
+            var thGamesPlayed = document.createElement("th");
+            var thWins = document.createElement("th");
+            var thDraws = document.createElement("th");
+            var thLosses = document.createElement("th");
+            var thPosition = document.createElement("th");
+            var imageLogo = document.createElement("img");
+            imageLogo.src = table.team.crestUrl;
+            imageLogo.style.width = "40px";
+            imageLogo.style.height = "40px";
+
+            thClub.textContent = table.team.name;
+            thPoints.textContent = table.points;
+            thGamesPlayed.textContent = table.playedGames;
+            thWins.textContent = table.won;
+            thDraws.textContent = table.draw;
+            thLosses.textContent = table.lost;
+            thPosition.textContent = table.position;
+
+            tr.appendChild(thPosition);
+            tr.appendChild(imageLogo);
+            tr.appendChild(thClub);
+            tr.appendChild(thGamesPlayed);
+            tr.appendChild(thWins);
+            tr.appendChild(thDraws);
+            tr.appendChild(thLosses);
+            tr.appendChild(thPoints);
+            
+            tBody.appendChild(tr);
+        });
+    });
+</script>
 
