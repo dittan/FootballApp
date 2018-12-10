@@ -78,3 +78,5 @@ C:\Users\Jacob\source\repos\FootballApp\FootballApp\obj\Debug\FootballApp.csproj
 C:\Users\Jacob\source\repos\FootballApp\FootballApp\obj\Debug\FootballApp.csproj.CopyComplete
 C:\Users\Jacob\source\repos\FootballApp\FootballApp\obj\Debug\FootballApp.dll
 C:\Users\Jacob\source\repos\FootballApp\FootballApp\obj\Debug\FootballApp.pdb
+C:\Users\Jacob\source\repos\FootballApp\FootballApp\bin\RestSharp.dll
+C:\Users\Jacob\source\repos\FootballApp\FootballApp\bin\RestSharp.xml

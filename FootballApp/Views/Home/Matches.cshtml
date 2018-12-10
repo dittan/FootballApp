@@ -1,0 +1,36 @@
+﻿@using Microsoft.Ajax.Utilities
+@model List<FootballApp.Models.Matches.Match>
+@{
+    ViewBag.Title = "Matches";
+}
+
+<div class="jumbotron">
+    <h1>Matches</h1>
+
+    @if (Model != null)
+    {
+        foreach (var match in Model)
+        {
+            <table @*class="table table-dark"*@>
+                <thead @*class="thead-light"*@>
+                    <tr>
+                        <th>Matchday : @match.Matchday</th>
+                        <th>@match.UtcDate.Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@match.HomeTeam.Name</td>
+                        <td>@match.Score.FullTime.HomeTeam</td>
+                        <td>@match.Score.FullTime.AwayTeam</td>
+                        <td>@match.AwayTeam.Name</td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+    }
+    else
+    {
+
+    }
+</div>
