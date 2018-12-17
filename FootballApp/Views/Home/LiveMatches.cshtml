@@ -45,27 +45,28 @@
             var thHomeName = document.createElement("th");
             var thAwayName = document.createElement("th");
             var thGoalHome = document.createElement("th");
-            var thGoalAway = document.createElement("th");
+            //var thGoalAway = document.createElement("th");
             var thStatus = document.createElement("th");
             var thMatchDay = document.querySelector("#matchDay");
 
             thMatchDay.textContent = "Matchday : " + match.matchday + " - " + today;
             thHomeName.textContent = match.homeTeam.name;
+            thHomeName.style.textAlign = 'center';
             thAwayName.textContent = match.awayTeam.name;
-            thGoalHome.textContent = match.score.fullTime.homeTeam;
-            thGoalAway.textContent = match.score.fullTime.awayTeam;
+            thAwayName.style.textAlign = "center";
+            thGoalHome.textContent = match.score.fullTime.homeTeam + " - " + match.score.fullTime.awayTeam;
+            thGoalHome.style.textAlign = "center";
 
             if (match.status == "IN_PLAY") {
                 thStatus.textContent = "LIVE";
                 thStatus.style.color = "lightgreen";
             } else if (match.status == "PAUSED") {
-                thStatus.textContent = "PAUSED";
+                thStatus.textContent = "HT";
                 thStatus.style.color = "yellow";
             }          
 
             tr.appendChild(thHomeName);
             tr.appendChild(thGoalHome);
-            tr.appendChild(thGoalAway);
             tr.appendChild(thAwayName);
             tr.appendChild(thStatus);
             tBody.appendChild(tr);

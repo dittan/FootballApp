@@ -11,19 +11,18 @@
     {
         foreach (var match in Model)
         {
-            <table @*class="table table-dark"*@>
-                <thead @*class="thead-light"*@>
+            <table class="table table-dark">
+                <thead class="thead-light">
                     <tr>
-                        <th>Matchday : @match.Matchday</th>
-                        <th>@match.UtcDate.Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>@match.HomeTeam.Name</td>
-                        <td>@match.Score.FullTime.HomeTeam</td>
-                        <td>@match.Score.FullTime.AwayTeam</td>
-                        <td>@match.AwayTeam.Name</td>
+                        <td align="center">Matchday : @match.Matchday</td>
+                        <td align="center"><b>@match.HomeTeam.Name</b></td>
+                        <td align="center" id="scoreResult">@match.Score.FullTime.HomeTeam - @match.Score.FullTime.AwayTeam</td>
+                        <td align="center"><b>@match.AwayTeam.Name</b></td>
+                        <td align="center">@match.UtcDate.Day/@match.UtcDate.Month/@match.UtcDate.Year</td>
                     </tr>
                 </tbody>
             </table>

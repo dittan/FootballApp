@@ -31,9 +31,11 @@ namespace FootballApp.Controllers
             IRestResponse response = client.Execute(request);
             var content = response.Content;
 
-            var match = JsonConvert.DeserializeObject<Matches>(content);       
+            var match = JsonConvert.DeserializeObject<Matches>(content);
+            var matches = match.AllMatches;
+            matches.Reverse();
 
-            return View(match.AllMatches);
+            return View(matches);
         }
 
         public ActionResult LiveMatches()

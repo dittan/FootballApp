@@ -38,3 +38,7 @@ body{
     border-left: 2px black solid;
     border-right: 2px black solid;
 }
+
+#scoreResult {
+    color: rgb(67, 177, 42);
+}
