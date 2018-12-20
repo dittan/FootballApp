@@ -7,11 +7,10 @@
     <h2 id="PL"></h2>
     <p id="lastUpdated"></p>
 
-    <table class="table table-striped table-dark">
+    <table class="table">
         <thead>
             <tr>
-                <th scope="col"></th>
-                <th scope="col"></th>
+                <th scope="col">Position</th>
                 <th scope="col">Club</th>
                 <th scope="col">MP</th>
                 <th scope="col">W</th>
@@ -43,34 +42,56 @@
 
         standingsArray.forEach(function (table) {
             var tr = document.createElement("tr");
-            var thClub = document.createElement("th");
-            var thPoints = document.createElement("th");
-            var thGamesPlayed = document.createElement("th");
-            var thWins = document.createElement("th");
-            var thDraws = document.createElement("th");
-            var thLosses = document.createElement("th");
-            var thPosition = document.createElement("th");
+            if (table.position == 1) {
+                tr.classList.add("tr-leader");
+            }
+            if (table.position == 2 || table.position == 3 || table.position == 4) {
+                tr.classList.add("tr-champions-league");
+            }
+            if (table.position == 5) {
+                tr.classList.add("tr-europa-league");
+            }
+            if (table.position == 18 || table.position == 19 || table.position == 20) {
+                tr.classList.add("tr-relegation");
+            }
+            var tdClub = document.createElement("td");
+            var logoSpan = document.createElement("span");
+            var clubNameSpan = document.createElement("span");
+            clubNameSpan.textContent = table.team.name;
+            clubNameSpan.style.paddingLeft = "10px";
             var imageLogo = document.createElement("img");
             imageLogo.src = table.team.crestUrl;
-            imageLogo.style.width = "40px";
-            imageLogo.style.height = "40px";
+            imageLogo.style.width = "25px";
+            imageLogo.style.height = "25px";
 
-            thClub.textContent = table.team.name;
-            thPoints.textContent = table.points;
-            thGamesPlayed.textContent = table.playedGames;
-            thWins.textContent = table.won;
-            thDraws.textContent = table.draw;
-            thLosses.textContent = table.lost;
-            thPosition.textContent = table.position;
+            logoSpan.appendChild(imageLogo);
+            tdClub.appendChild(logoSpan);
+            tdClub.appendChild(clubNameSpan);
 
-            tr.appendChild(thPosition);
-            tr.appendChild(imageLogo);
-            tr.appendChild(thClub);
-            tr.appendChild(thGamesPlayed);
-            tr.appendChild(thWins);
-            tr.appendChild(thDraws);
-            tr.appendChild(thLosses);
-            tr.appendChild(thPoints);
+            var tdPoints = document.createElement("td");
+            tdPoints.classList.add("td-points");
+            var tdGamesPlayed = document.createElement("td");
+            var tdWins = document.createElement("td");
+            var tdDraws = document.createElement("td");
+            var tdLosses = document.createElement("td");
+            var tdPosition = document.createElement("td");
+
+
+ 
+            tdPoints.textContent = table.points;
+            tdGamesPlayed.textContent = table.playedGames;
+            tdWins.textContent = table.won;
+            tdDraws.textContent = table.draw;
+            tdLosses.textContent = table.lost;
+            tdPosition.textContent = table.position;
+
+            tr.appendChild(tdPosition);
+            tr.appendChild(tdClub);
+            tr.appendChild(tdGamesPlayed);
+            tr.appendChild(tdWins);
+            tr.appendChild(tdDraws);
+            tr.appendChild(tdLosses);
+            tr.appendChild(tdPoints);
             
             tBody.appendChild(tr);
         });
