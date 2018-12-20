@@ -1,5 +1,4 @@
-﻿@import url(https://fonts.googleapis.com/css?family=Raleway);
-
+﻿@import url('https://fonts.googleapis.com/css?family=Raleway:400,600,700');
 html {
     width:100%;
 }
@@ -7,12 +6,14 @@ body {
     /*background-color: whitesmoke !important;*/
     color: black !important;
     margin:0 auto !important;
-    width: 80%;
+    width: 100%;
 }
 
 
 main {
-    width: 100%;
+    width: 60%;
+    margin:20px;
+    margin:0 auto;
 }
 #mainNav {
     /*background-color: #3fa46a !important;
@@ -21,7 +22,21 @@ main {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);*/
 }
 
+.navbar {
+ 
+}
+
+.nav-item {
+    padding-right:20px;
+}
 .nav-link {
+    color: white !important;
+    font-family: 'Raleway';
+    text-transform: uppercase;
+    font-weight: 600;
+    position: relative;
+    margin-top:10px;
+    margin-bottom:10px;
     /*transition: 0.3s ease !important;
     background: #3fa46a !important;
     color: #ffffff !important;
@@ -33,14 +48,36 @@ main {
     margin: 0 20px !important;*/
 }
 
+    .nav-link,
+    .nav-link:after,
+    .nav-link:before{
+        transition: all .5s !important;
+    }
+    .nav-link::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 0%;
+        content: '.';
+        color: transparent;
+        background: #aaa;
+        height: 1px;
+    }
+
+    .nav-link:hover:after {
+        width: 100%;
+    }
 .nav-link:hover {
     /*border-top: 4px solid #ffffff !important;
     border-bottom: 4px solid #ffffff !important;
     padding: 6px 0 !important;*/
 }
 
-.pl-table {
-
+.pl-table .table{
+    width:80% !important;
+    margin:0 auto;
 }
 
 #scoreResult {
@@ -79,4 +116,74 @@ main {
 
 .tr-relegation {
     background-color: #eee;
+}
+
+.table-header {
+    display:flex;
+    align-items:center;
+    margin-top:20px;
+    margin-bottom:20px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+#PL {
+    font-size:125%;
+    font-family:'Raleway';
+}
+
+.pl-logo {
+    width:40px;
+    margin-right:15px;
 }
