@@ -1,12 +1,12 @@
 ﻿@import url(https://fonts.googleapis.com/css?family=Raleway);
 
 body{
-    background-color: whitesmoke !important;
+    /*background-color: whitesmoke !important;*/
     color:black !important;
 }
 
 #mainNav {
-    background-color: #3fa46a !important;
+    /*background-color: #3fa46a !important;*/
     border: 2px black solid;
     font-family: Raleway !important;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
@@ -14,7 +14,7 @@ body{
 
 .nav-link {
     transition: 0.3s ease !important;
-    background: #3fa46a !important;
+    /*background: #3fa46a !important;*/
     color: #ffffff !important;
     font-size: 20px !important;
     text-decoration: none !important;
@@ -32,13 +32,47 @@ body{
 
 .jumbotron {
     color: black;
-    background-color: #3fa46a !important;
-    border-radius: 0 !important;
+    background-color: white !important;
+    /*border-radius: 0 !important;
     border-bottom: 2px black solid;
     border-left: 2px black solid;
-    border-right: 2px black solid;
+    border-right: 2px black solid;*/
 }
 
 #scoreResult {
     color: rgb(67, 177, 42);
+}
+
+.table td, .table th {
+    vertical-align: auto !important;
+    padding:.5rem !important;
+}
+
+.td-points {
+    font-weight:bold;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 1px solid #dee2e6 !important;
+    border-top: none !important;
+    color: #666;
+    font-size:80%;
+    font-weight:600;
+}
+
+.tr-leader {
+    background-color: #e4e4e4;
+}
+
+.tr-champions-league {
+    background-color:#eee;
+}
+
+.tr-europa-league {
+    background-color: #f8f8f8;
+}
+
+.tr-relegation {
+    background-color: #eee;
 }
