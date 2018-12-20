@@ -42,5 +42,21 @@ namespace FootballApp.Controllers
         {
             return View();
         }
+
+        public ActionResult StandingsCl()
+        {
+            var client = new RestClient("http://api.football-data.org/");
+
+            var request = new RestRequest("v2/competitions/CL/standings?standingType=TOTAL", Method.GET);
+            request.AddHeader("X-Auth-Token", "89b1396c62ff41119cabd0a504ec09bf");
+
+            IRestResponse response = client.Execute(request);
+            var content = response.Content;
+
+            var standing = JsonConvert.DeserializeObject<ChampionsGroupStage>(content);
+            var standings = standing.Standings;
+
+            return View(standings);
+        }
     }
 }

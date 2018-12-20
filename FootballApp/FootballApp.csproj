@@ -133,6 +133,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChampionsGroupStage.cs" />
     <Compile Include="Models\Matches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -175,6 +176,7 @@
     <Content Include="Views\Home\Teams.cshtml" />
     <Content Include="Views\Home\Matches.cshtml" />
     <Content Include="Views\Home\LiveMatches.cshtml" />
+    <Content Include="Views\Home\StandingsCl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
