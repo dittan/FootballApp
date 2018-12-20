@@ -1,0 +1,49 @@
+﻿@model List<FootballApp.Models.ChampionsGroupStage.Standing>
+@{
+    ViewBag.Title = "StandingsCl";
+}
+
+<div class="jumbotron">
+    <h2>hej</h2>
+    @if (Model.Any())
+    {
+        foreach (var standing in Model)
+        {
+            <table class="table table-light">
+                <p>@standing.Group</p>
+                <thead>
+                    <th>Position</th>
+                    <th>Club</th>
+                    <th>MP</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>Pts</th>
+                </thead>
+                @foreach (var table in standing.Table)
+                {
+                    <tbody>
+                        <th>@table.Position</th>
+                        <th>@table.Team.Name</th>
+                        <th>@table.PlayedGames</th>
+                        <th>@table.Won</th>
+                        <th>@table.Draw</th>
+                        <th>@table.Lost</th>
+                        <th>@table.Points</th>
+                    </tbody>
+                }
+            </table>
+        }
+    }
+</div>
+
+<script>
+                            //$.ajax({
+                            //    headers: { 'X-Auth-Token': '89b1396c62ff41119cabd0a504ec09bf' },
+                            //    url: "http://api.football-data.org/v2/competitions/CL/matches?status=SCHEDULED&limit=1",
+                            //    dataType: 'json',
+                            //    type: 'GET',
+                            //}).done(function (response) {
+                            //    console.log(response);
+                            //});
+</script>
