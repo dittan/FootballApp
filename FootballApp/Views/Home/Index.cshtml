@@ -3,14 +3,17 @@
 }
 
 <div class="pl-table">
-    <h1>Standings</h1>
-    <h2 id="PL"></h2>
-    <p id="lastUpdated"></p>
+    <div class="table-header d-flex justify-content-center">
+       
+        <img class="pl-logo" src="~/Content/img/icons8-the-premier-league-48.png"  alt="Alternate Text" />
+        <span id="PL"></span>
+    </div>
+    <p id="lastUpdated" style="display:none;"></p>
 
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Position</th>
+                <th scope="col" class="d-flex justify-content-center">Position</th>
                 <th scope="col">Club</th>
                 <th scope="col">MP</th>
                 <th scope="col">W</th>
@@ -75,6 +78,8 @@
             var tdDraws = document.createElement("td");
             var tdLosses = document.createElement("td");
             var tdPosition = document.createElement("td");
+            tdPosition.classList.add("d-flex");
+            tdPosition.classList.add("justify-content-center");
 
 
  
