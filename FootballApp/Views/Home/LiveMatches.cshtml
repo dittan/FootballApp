@@ -5,12 +5,12 @@
 
 <div class="jumbotron">
     <h1>Live Matches</h1>
-    
+
     <table class="table table-striped table-dark">
         <thead>
-        <tr>
-            <th scope="col" id="matchDay"></th>
-        </tr>
+            <tr>
+                <th scope="col" id="matchDay"></th>
+            </tr>
         </thead>
         <tbody id="matchesBody"></tbody>
     </table>
@@ -18,58 +18,65 @@
 
 
 <script>
-    $.ajax({
-        headers: { 'X-Auth-Token': '89b1396c62ff41119cabd0a504ec09bf' },
-        url: "http://api.football-data.org/v2/competitions/PL/matches?status=LIVE",
-        dataType: 'json',
-        type: 'GET',
+    function loadMatches() {
+        $.ajax({
+            headers: { 'X-Auth-Token': '89b1396c62ff41119cabd0a504ec09bf' },
+            url: "http://api.football-data.org/v2/competitions/PL/matches?status=LIVE",
+            dataType: 'json',
+            type: 'GET',
 
-    }).done(function (response) {  
-        var liveMatchesArray = jQuery.makeArray(response.matches);
+        }).done(function (response) {
+            var liveMatchesArray = jQuery.makeArray(response.matches);
 
-        var tBody = document.querySelector("#matchesBody");
+            var tBody = document.querySelector("#matchesBody");
 
-        if (response.count == 0) {
-            var matchDay = document.querySelector("#matchDay");
-            matchDay.textContent = "There is no matches live.";
-        }
+            if (response.count == 0) {
+                var matchDay = document.querySelector("#matchDay");
+                matchDay.textContent = "There is no matches live.";
+            }
 
-        liveMatchesArray.forEach(function (match) {
-            var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth()+1;
-            var yyyy = today.getFullYear();
-            today = mm + '/' + dd + '/' + yyyy;
+            liveMatchesArray.forEach(function (match) {
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1;
+                var yyyy = today.getFullYear();
+                today = mm + '/' + dd + '/' + yyyy;
 
-            var tr = document.createElement("tr");
-            var thHomeName = document.createElement("th");
-            var thAwayName = document.createElement("th");
-            var thGoalHome = document.createElement("th");
-            //var thGoalAway = document.createElement("th");
-            var thStatus = document.createElement("th");
-            var thMatchDay = document.querySelector("#matchDay");
+                var tr = document.createElement("tr");
+                var thHomeName = document.createElement("th");
+                var thAwayName = document.createElement("th");
+                var thGoalHome = document.createElement("th");
+                //var thGoalAway = document.createElement("th");
+                var thStatus = document.createElement("th");
+                var thMatchDay = document.querySelector("#matchDay");
 
-            thMatchDay.textContent = "Matchday : " + match.matchday + " - " + today;
-            thHomeName.textContent = match.homeTeam.name;
-            thHomeName.style.textAlign = 'center';
-            thAwayName.textContent = match.awayTeam.name;
-            thAwayName.style.textAlign = "center";
-            thGoalHome.textContent = match.score.fullTime.homeTeam + " - " + match.score.fullTime.awayTeam;
-            thGoalHome.style.textAlign = "center";
+                thMatchDay.textContent = "Matchday : " + match.matchday + " - " + today;
+                thHomeName.textContent = match.homeTeam.name;
+                thHomeName.style.textAlign = 'center';
+                thAwayName.textContent = match.awayTeam.name;
+                thAwayName.style.textAlign = "center";
+                thGoalHome.textContent = match.score.fullTime.homeTeam + " - " + match.score.fullTime.awayTeam;
+                thGoalHome.style.textAlign = "center";
 
-            if (match.status == "IN_PLAY") {
-                thStatus.textContent = "LIVE";
-                thStatus.style.color = "lightgreen";
-            } else if (match.status == "PAUSED") {
-                thStatus.textContent = "HT";
-                thStatus.style.color = "yellow";
-            }          
+                if (match.status == "IN_PLAY") {
+                    thStatus.textContent = "LIVE";
+                    thStatus.style.color = "lightgreen";
+                } else if (match.status == "PAUSED") {
+                    thStatus.textContent = "HT";
+                    thStatus.style.color = "yellow";
+                }
 
-            tr.appendChild(thHomeName);
-            tr.appendChild(thGoalHome);
-            tr.appendChild(thAwayName);
-            tr.appendChild(thStatus);
-            tBody.appendChild(tr);
+                tr.appendChild(thHomeName);
+                tr.appendChild(thGoalHome);
+                tr.appendChild(thAwayName);
+                tr.appendChild(thStatus);
+                tBody.appendChild(tr);
+            });
         });
-    });
+    }
+
+    loadMatches();
+    setInterval(function() {
+        loadMatches();
+    }, 10000);
 </script>
