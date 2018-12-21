@@ -134,7 +134,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChampionsGroupStage.cs" />
+    <Compile Include="Models\GroupUpComingChampionsViewModel.cs" />
     <Compile Include="Models\Matches.cs" />
+    <Compile Include="Models\UpComingMatchesChampions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
