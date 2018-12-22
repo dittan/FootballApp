@@ -1,35 +1,64 @@
-﻿@model List<FootballApp.Models.ChampionsGroupStage.Standing>
+﻿@model FootballApp.Models.GroupUpComingChampionsViewModel
 @{
     ViewBag.Title = "StandingsCl";
 }
 
 <div class="jumbotron">
-    <h2>hej</h2>
-    @if (Model.Any())
+    <h2>Champions League</h2>
+
+    @if (Model != null)
     {
-        foreach (var standing in Model)
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th>Stage</th>
+                    <th>Home</th>
+                    <th>Away</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var match in Model.ListUpComingMatches)
+                {
+                    <tr>
+                        <td>@match.Stage</td>
+                        <td>@match.HomeTeam.Name</td>
+                        <td>@match.AwayTeam.Name</td>
+                        <td>@match.UtcDate.Day/@match.UtcDate.Month/@match.UtcDate.Year</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        //End of round16 table
+
+        //Start of groupstage
+        foreach (var standing in Model.ListGroupStage)
         {
             <table class="table table-light">
                 <p>@standing.Group</p>
                 <thead>
-                    <th>Position</th>
-                    <th>Club</th>
-                    <th>MP</th>
-                    <th>W</th>
-                    <th>D</th>
-                    <th>L</th>
-                    <th>Pts</th>
+                    <tr>
+                        <th>Position</th>
+                        <th>Club</th>
+                        <th>MP</th>
+                        <th>W</th>
+                        <th>D</th>
+                        <th>L</th>
+                        <th>Pts</th>
+                    </tr>
                 </thead>
                 @foreach (var table in standing.Table)
                 {
                     <tbody>
-                        <th>@table.Position</th>
-                        <th>@table.Team.Name</th>
-                        <th>@table.PlayedGames</th>
-                        <th>@table.Won</th>
-                        <th>@table.Draw</th>
-                        <th>@table.Lost</th>
-                        <th>@table.Points</th>
+                        <tr>
+                            <td>@table.Position</td>
+                            <td>@table.Team.Name</td>
+                            <td>@table.PlayedGames</td>
+                            <td>@table.Won</td>
+                            <td>@table.Draw</td>
+                            <td>@table.Lost</td>
+                            <td>@table.Points</td>
+                        </tr>
                     </tbody>
                 }
             </table>
@@ -37,13 +66,4 @@
     }
 </div>
 
-<script>
-                            //$.ajax({
-                            //    headers: { 'X-Auth-Token': '89b1396c62ff41119cabd0a504ec09bf' },
-                            //    url: "http://api.football-data.org/v2/competitions/CL/matches?status=SCHEDULED&limit=1",
-                            //    dataType: 'json',
-                            //    type: 'GET',
-                            //}).done(function (response) {
-                            //    console.log(response);
-                            //});
-</script>
+
